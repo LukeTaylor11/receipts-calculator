@@ -1,0 +1,48 @@
+<style>
+  ion-thumbnail {
+    min-width: 4rem;
+    min-height: 4rem;
+    border-radius: 6rem !important;
+  }
+  ion-thumbnail img {
+    max-width: 4rem;
+    min-width: 4rem;
+    border-radius: 6rem !important;
+  }
+
+  #totalCostDiv{
+      padding-right: 1%;
+      width: 35%;
+  }
+
+  #totalCostDiv span{
+    color: green;
+  }
+
+</style>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Your Receipts</ion-title>
+    <div slot = 'end' id = 'totalCostDiv'>
+      Total: <span>£<span [innerHTML]="totalCost"></span> </span>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor = "let receipt of receipts" [routerLink] = "['/tabs/view-receipts/', receipt.id]">
+      <ion-avatar slot = "start">
+        <ion-img [src] = "receipt.imageUrl"></ion-img>
+      </ion-avatar>
+      <ion-label>
+        <h2>{{receipt.title}}</h2>
+        <p>£{{ receipt.totalCost.toFixed(2) }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <br>
+  <div id = "errors"></div>
+</ion-content>
+

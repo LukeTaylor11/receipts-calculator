@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">receipts-calculator-2</string>
+    <string name="title_activity_main">receipts-calculator-2</string>
+    <string name="package_name">com.example.app2783</string>
+    <string name="custom_url_scheme">com.example.app2783</string>
+</resources>

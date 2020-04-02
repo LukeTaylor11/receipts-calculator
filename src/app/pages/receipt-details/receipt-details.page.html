@@ -1,0 +1,42 @@
+<style>
+  #receiptImg{
+    height: 45vh;
+  }
+</style>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot = 'start'>
+      <ion-back-button defaultHref="/tabs/view-receipts" color = "dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Details of Receipt</ion-title>
+    <ion-buttons slot = "primary">
+      <ion-button (click) = "onDeleteReceipt()" color = "danger">
+        <ion-icon name = "trash" slot = "icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col class = "ion-no-padding">
+        <ion-img [src]="loadedReceipt.imageUrl" id = "receiptImg"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h1 class =  "ion-text-center">{{ loadedReceipt.title }}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p>Total cost: £{{loadedReceipt.totalCost.toFixed(2)}}</p>
+        <p>This was uploaded on {{fullDate}} at {{fullTime}}</p>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
+

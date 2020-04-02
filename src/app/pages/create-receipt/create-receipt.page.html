@@ -1,0 +1,66 @@
+<style>
+  #submitBtn{
+
+  }
+
+  .error-message{
+    color: var(--ion-color-danger);
+    font-size: 70%;
+  }
+
+    #uploadedImg{
+        width: 250px;
+        height: 250px;
+        display: none;
+    }
+</style>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add New Receipt</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="registrationForm" (ngSubmit)='submit()'>
+    <ion-list>
+        <ion-item>
+          <ion-label position = 'floating'>Title</ion-label>
+          <ion-input formControlName = "title"  autocapitalize inputmode = 'text'></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.title">
+          <ng-container *ngIf = "title.hasError(error.type) && (title.dirty)">
+            <small class = 'error-message'>{{error.message}}</small>
+          </ng-container>
+        </div>
+        <ion-item>
+          <ion-label position = 'floating'>Total Cost</ion-label>
+          <ion-input inputmode = 'numeric' formControlName = 'totalCost'></ion-input>
+       </ion-item>
+        <div *ngFor="let error of errorMessages.totalCost">
+            <ng-container *ngIf = "totalCost.hasError(error.type) && (totalCost.dirty)">
+                <small class = 'error-message'>{{error.message}}</small>
+            </ng-container>
+        </div>
+    </ion-list>
+      <div>
+          <ion-img id = "uploadedImg" [src] = imageString alt=""></ion-img>
+      </div>
+        <br><br><br>
+      <ion-fab  horizontal="center">
+          <ion-fab-button (click)="takePicture()">
+              <ion-icon name="camera"></ion-icon>
+          </ion-fab-button>
+      </ion-fab>
+
+
+
+  </form>
+
+
+
+</ion-content>
+<ion-button type = 'submit' (click) = 'submit()' expand = 'block' color = 'primary' id = "submitBtn" [disabled]="!registrationForm.valid">
+  Submit
+</ion-button>
+
